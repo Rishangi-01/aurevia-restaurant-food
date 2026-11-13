@@ -255,7 +255,7 @@ export default function Footer() {
           </div>
 
           <p className="text-sm text-white/90 sm:text-base">
-            © {new Date().getFullYear()} Aurevia Restaurant. All Rights Reserved.
+            Copyright © 2026. All Rights Reserved. Powered By Lestow.
           </p>
 
           <p className="text-xs tracking-wide text-[#f5d58c]/80">
