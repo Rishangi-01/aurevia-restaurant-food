@@ -8,11 +8,11 @@ import { Menu, X, ChevronRight } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/", active: true },
-  { name: "About Us", href: "/about" },
-  { name: "Menu", href: "/menu" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Chefs", href: "/chefs" },
-  { name: "Contact Us", href: "/contact" },
+  { name: "About Us", href: "#about" },
+  { name: "Menu", href: "#menu" },
+  { name: "Gallery", href: "#gallery" },
+  { name: "Chefs", href: "#chefs" },
+  { name: "Contact Us", href: "#contact" },
 ];
 
 export default function Navbar() {
