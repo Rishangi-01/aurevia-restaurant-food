@@ -9,6 +9,7 @@ import MenuSection from "@/components/MenuSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import { restaurantSiteData } from "@/data";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
             className="h-[600px] w-full bg-cover bg-center sm:h-[650px] lg:h-[calc(100vh-90px)] lg:min-h-[620px] lg:max-h-[850px]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(33, 2, 7, 0.55), rgba(28, 3, 5, 0.4)), url('/images/hero-1.png')",
+                `linear-gradient(rgba(33, 2, 7, 0.55), rgba(28, 3, 5, 0.4)), url('${restaurantSiteData.heroImage}')`,
             }}
           />
         }

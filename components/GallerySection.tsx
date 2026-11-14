@@ -3,49 +3,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-
-const galleryImages = [
-  {
-    id: 1,
-    src: "/images/gallery-restaurant.png",
-    alt: "Elegant Aurevia restaurant interior",
-    className: "col-span-2 row-span-2",
-    imageClass: "object-center",
-    delay: 0,
-  },
-  {
-    id: 2,
-    src: "/images/gallery-food1.png",
-    alt: "Delicious grilled salmon with fresh vegetables",
-    className: "col-span-1 row-span-1",
-    imageClass: "object-center",
-    delay: 0.12,
-  },
-  {
-    id: 3,
-    src: "/images/menu-fruit-bowl.png",
-    alt: "Freshly prepared penne pasta",
-    className: "col-span-1 row-span-1",
-    imageClass: "object-center",
-    delay: 0.2,
-  },
-  {
-    id: 4,
-    src: "/images/menu-idli.png",
-    alt: "Chocolate lava cake with vanilla ice cream",
-    className: "col-span-1 row-span-1",
-    imageClass: "object-center",
-    delay: 0.28,
-  },
-  {
-    id: 5,
-    src: "/images/menu-sandwich.png",
-    alt: "Beautifully arranged restaurant dining table",
-    className: "col-span-1 row-span-1",
-    imageClass: "object-center",
-    delay: 0.36,
-  },
-];
+import { restaurantGalleryData } from "@/data";
 
 export default function GallerySection() {
   const reduceMotion = useReducedMotion();
@@ -71,7 +29,7 @@ export default function GallerySection() {
             <span className="h-[1.5px] w-12 bg-[#c28a35] sm:w-[75px]" />
 
             <span className="text-xs font-bold uppercase tracking-[5px] text-[#741421] sm:text-sm sm:tracking-[7px]">
-              Our Gallery
+              {restaurantGalleryData.title[0]}
             </span>
 
             <span className="h-[1.5px] w-12 bg-[#c28a35] sm:w-[75px]" />
@@ -85,9 +43,9 @@ export default function GallerySection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-serif text-4xl font-bold leading-tight text-[#701522] sm:text-5xl md:text-6xl lg:text-[68px]"
           >
-            A Glimpse of Our{" "}
+            {restaurantGalleryData.heading[0]}{" "}
             <span className="italic text-[#bd842e]">
-              Restaurant
+              {restaurantGalleryData.heading[1]}
             </span>
           </motion.h2>
 
@@ -123,9 +81,9 @@ export default function GallerySection() {
 
           <div className="relative z-10 grid auto-rows-[145px] grid-cols-2 gap-3 sm:auto-rows-[190px] sm:gap-4 md:auto-rows-[220px] lg:auto-rows-[260px] lg:grid-cols-4 lg:gap-[18px]">
 
-            {galleryImages.map((image) => (
+            {restaurantGalleryData.items.map((image, index) => (
               <motion.div
-                key={image.id}
+                key={image.src}
                 initial={
                   reduceMotion
                     ? false
@@ -165,7 +123,7 @@ export default function GallerySection() {
                   alt={image.alt}
                   fill
                   sizes={
-                    image.id === 1
+                    index === 0
                       ? "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                       : "(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                   }

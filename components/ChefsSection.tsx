@@ -4,39 +4,13 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChefHat } from "lucide-react";
-
-const chefs = [
-  {
-    id: 1,
-    name: "William Joe",
-    role: "HEAD CHEF",
-    description:
-      "A culinary expert with 20+ years of experience in creating exceptional flavors.",
-    image: "/images/chef-william.png",
-    alt: "William Joe - Head Chef",
-  },
-  {
-    id: 2,
-    name: "Steave Den",
-    role: "EXECUTIVE CHEF",
-    description:
-      "Specializes in modern cuisine with a perfect blend of taste and innovation.",
-    image: "/images/chef-steave.png",
-    alt: "Steave Den - Executive Chef",
-  },
-  {
-    id: 3,
-    name: "Lily Sopy",
-    role: "PASTRY CHEF",
-    description:
-      "Brings creativity and passion to craft delightful desserts and baked treats.",
-    image: "/images/chef-lily.png",
-    alt: "Lily Sopy - Pastry Chef",
-  },
-];
+import { restaurantTeamData, restaurantWhyChooseUsData } from "@/data";
 
 export default function ChefsSection() {
   const reduceMotion = useReducedMotion();
+  const titleWords = restaurantTeamData.title.split(" ");
+  const titleHighlight = titleWords.pop();
+  const titlePrefix = titleWords.join(" ");
 
   return (
     <section
@@ -44,9 +18,7 @@ export default function ChefsSection() {
       className="relative isolate overflow-hidden bg-[#fcf8f3] px-5 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-24 w-full"
     >
 
-      {/* ======================================
-          TOP LEFT BASIL IMAGE
-      ====================================== */}
+
 
       <motion.div
         initial={
@@ -64,7 +36,7 @@ export default function ChefsSection() {
         className="pointer-events-none absolute left-0 top-0 z-0 h-[115px] w-[130px] sm:h-[155px] sm:w-[175px] lg:h-[195px] lg:w-[210px]"
       >
         <Image
-          src="/images/strength-leaves.png"
+          src={restaurantWhyChooseUsData.leavesImage}
           alt=""
           fill
           sizes="210px"
@@ -72,9 +44,7 @@ export default function ChefsSection() {
         />
       </motion.div>
 
-      {/* ======================================
-          TOP RIGHT TOMATO IMAGE
-      ====================================== */}
+
 
       <motion.div
         initial={
@@ -92,7 +62,7 @@ export default function ChefsSection() {
         className="pointer-events-none absolute right-0 top-0 z-0 h-[115px] w-[135px] sm:h-[155px] sm:w-[185px] lg:h-[190px] lg:w-[220px]"
       >
         <Image
-          src="/images/strength-tomatoes.png"
+          src={restaurantWhyChooseUsData.tomatoesImage}
           alt=""
           fill
           sizes="220px"
@@ -100,13 +70,11 @@ export default function ChefsSection() {
         />
       </motion.div>
 
-      {/* ======================================
-          SECTION HEADING
-      ====================================== */}
+
 
       <div className="relative z-10 mx-auto mb-12 max-w-[1000px] text-center sm:mb-14 lg:mb-16">
 
-        {/* CHEF ICON */}
+
         <motion.div
           initial={{ opacity: 0, y: -20, scale: 0.7 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -121,7 +89,7 @@ export default function ChefsSection() {
           />
         </motion.div>
 
-        {/* SUBTITLE */}
+
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -132,13 +100,13 @@ export default function ChefsSection() {
           <span className="h-[1.5px] w-12 bg-[#bd842e] sm:w-24" />
 
           <p className="text-xs font-bold uppercase tracking-[5px] text-[#701522] sm:text-base sm:tracking-[7px]">
-            Our Chefs
+            {restaurantTeamData.eyebrow}
           </p>
 
           <span className="h-[1.5px] w-12 bg-[#bd842e] sm:w-24" />
         </motion.div>
 
-        {/* MAIN TITLE */}
+
         <motion.h2
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -146,13 +114,13 @@ export default function ChefsSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-4 font-serif text-5xl font-bold leading-tight text-[#701522] sm:text-6xl md:text-7xl lg:text-[76px]"
         >
-          Meet Our{" "}
+          {titlePrefix}{" "}
           <span className="italic text-[#bd842e]">
-            Chefs
+            {titleHighlight}
           </span>
         </motion.h2>
 
-        {/* GOLD DECORATIVE DIVIDER */}
+
         <motion.div
           initial={{ opacity: 0, scaleX: 0.3 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
@@ -172,15 +140,13 @@ export default function ChefsSection() {
         </motion.div>
       </div>
 
-      {/* ======================================
-          CHEF PROFILE CARDS
-      ====================================== */}
+
 
       <div className="relative z-10 mx-auto grid max-w-[1250px] grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-8">
 
-        {chefs.map((chef, index) => (
+        {restaurantTeamData.members.map((chef, index) => (
           <motion.div
-            key={chef.id}
+            key={chef.name}
             initial={
               reduceMotion
                 ? false
@@ -210,47 +176,43 @@ export default function ChefsSection() {
             className="group relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[25px] border-[1.5px] border-[#d49a2e] bg-[#fcf8f3] shadow-[0_8px_24px_rgba(89,27,20,0.07)] transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(89,27,20,0.15)]"
           >
 
-            {/* ==================================
-                CHEF IMAGE
-            ================================== */}
+
 
             <div className="relative h-[340px] overflow-hidden bg-[#ead8c7] sm:h-[320px] lg:h-[350px]">
 
               <Image
                 src={chef.image}
-                alt={chef.alt}
+                alt={chef.imageAlt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
               />
 
-              {/* Image bottom gradient */}
+
               <div className="absolute inset-0 bg-gradient-to-t from-[#3a100c]/15 via-transparent to-transparent opacity-70" />
 
-              {/* Gold image overlay border */}
+
               <div className="pointer-events-none absolute inset-0 border-b border-[#d49a2e]/40" />
 
             </div>
 
-            {/* ==================================
-                CHEF INFORMATION PANEL
-            ================================== */}
+
 
             <div className="relative z-10 -mt-1 flex min-h-[198px] flex-col items-center rounded-t-[24px] bg-gradient-to-b from-[#fffaf4] to-[#fcf5ec] px-4 pb-7 pt-3 text-center sm:min-h-[200px] sm:px-5">
 
-              {/* CHEF NAME */}
+
               <h3 className="font-serif text-[27px] font-bold leading-tight text-[#701522] transition-colors duration-300 group-hover:text-[#bd842e] sm:text-[29px]">
                 {chef.name}
               </h3>
 
-              {/* CHEF ROLE */}
+
               <div className="mt-2 rounded-full bg-gradient-to-r from-[#bd842e] via-[#d29a39] to-[#a96e17] px-7 py-1.5 shadow-sm">
                 <p className="text-[12px] font-bold tracking-[2px] text-white sm:text-[13px]">
                   {chef.role}
                 </p>
               </div>
 
-              {/* DECORATIVE GOLD DIVIDER */}
+
               <div className="mt-4 flex w-[72px] items-center justify-center gap-1">
                 <span className="h-[1px] flex-1 bg-[#bd842e]" />
 
@@ -271,7 +233,7 @@ export default function ChefsSection() {
                 <span className="h-[1px] flex-1 bg-[#bd842e]" />
               </div>
 
-              {/* CHEF DESCRIPTION */}
+
               <p className="mt-4 max-w-[360px] text-[14px] leading-[1.65] text-[#292929] sm:text-[15px] lg:text-base">
                 {chef.description}
               </p>
@@ -283,9 +245,7 @@ export default function ChefsSection() {
 
       </div>
 
-      {/* ======================================
-          BOTTOM DECORATIVE WAVE
-      ====================================== */}
+
 
       <div className="pointer-events-none absolute -bottom-12 left-[-5%] -z-0 h-24 w-[110%] rounded-[50%] bg-[#f8eadb]/80 blur-sm" />
 

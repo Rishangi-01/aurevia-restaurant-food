@@ -3,29 +3,18 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { restaurantFooterData, restaurantSiteData } from "@/data";
 
-const quickLinks = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Our Menu", href: "/menu" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Contact Us", href: "/contact" },
-];
-
-const services = [
-  "Dine In",
-  "Takeaway",
-  "Home Delivery",
-  "Private Events",
-  "Party Booking",
-];
-
-const socialLinks = [
-  { name: "f", href: "#", label: "Facebook" },
-  { name: "◎", href: "#", label: "Instagram" },
-  { name: "▶", href: "#", label: "YouTube" },
-  { name: "in", href: "#", label: "LinkedIn" },
-];
+const quickLinks = restaurantFooterData.columns[0].links;
+const services = restaurantFooterData.columns[1].links;
+const socialLinks = restaurantSiteData.socials;
+const footerContacts = [...restaurantFooterData.contactDetails].sort((first, second) => {
+  const displayOrder: Record<string, number> = { "map-pin": 0, phone: 1, mail: 2 };
+  return displayOrder[first.icon] - displayOrder[second.icon];
+});
+const restaurantLabel = restaurantSiteData.alt
+  .replace(restaurantSiteData.name, "")
+  .trim();
 
 const containerVariants = {
   hidden: {},
@@ -51,7 +40,7 @@ export default function Footer() {
       className="relative isolate overflow-hidden text-white"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(20, 7, 4, 0.48), rgba(20, 7, 4, 0.55)), url('/images/footer-bg.png')",
+          `linear-gradient(rgba(20, 7, 4, 0.48), rgba(20, 7, 4, 0.55)), url('${restaurantSiteData.bgImage}')`,
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
@@ -68,7 +57,7 @@ export default function Footer() {
           className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_0.85fr_0.95fr_1.4fr] lg:gap-10"
         >
 
-          {/* Brand Column */}
+          
           <motion.div variants={itemVariants} className="lg:pr-8">
 
             <Link href="/" className="group inline-flex flex-col items-center">
@@ -77,24 +66,23 @@ export default function Footer() {
               </span>
 
               <span className="font-serif text-5xl tracking-tight text-white sm:text-6xl">
-                Aurevia
+                {restaurantSiteData.name}
               </span>
 
               <div className="mt-2 flex w-full items-center gap-3">
                 <span className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#e5bd71]" />
                 <span className="text-xs font-semibold tracking-[0.35em] text-[#f5d58c]">
-                  RESTAURANT
+                  {restaurantLabel}
                 </span>
                 <span className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#e5bd71]" />
               </div>
             </Link>
 
             <p className="mt-7 max-w-[380px] text-[15px] leading-7 text-white/85 sm:text-base">
-              Aurevia brings you a perfect blend of delicious food, warm
-              hospitality, and a memorable dining experience.
+              {restaurantFooterData.about}
             </p>
 
-            {/* Social Icons */}
+          
             <div className="mt-7 flex items-center gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -114,26 +102,26 @@ export default function Footer() {
                   }}
                   className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e5bd71] text-lg font-bold text-[#f5d58c] transition-colors duration-300"
                 >
-                  {social.name}
+                  {social.symbol}
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          
           <motion.div
             variants={itemVariants}
             className="border-l border-[#e5bd71]/40 pl-6 lg:pl-10"
           >
             <h3 className="font-serif text-2xl font-bold text-white sm:text-3xl">
-              Quick Links
+              {restaurantFooterData.columns[0].title}
             </h3>
 
             <div className="mb-6 mt-5 h-[2px] w-24 bg-gradient-to-r from-[#f5d58c] to-transparent" />
 
             <ul className="space-y-4">
               {quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="group flex items-center gap-3 text-[15px] text-white/85 transition-all duration-300 hover:translate-x-2 hover:text-[#f5d58c] sm:text-base"
@@ -141,97 +129,90 @@ export default function Footer() {
                     <span className="text-xl text-[#f5d58c] transition-transform duration-300 group-hover:translate-x-1">
                       ›
                     </span>
-                    {link.name}
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Services */}
+          
           <motion.div
             variants={itemVariants}
             className="border-l border-[#e5bd71]/40 pl-6 lg:pl-10"
           >
             <h3 className="font-serif text-2xl font-bold text-white sm:text-3xl">
-              Our Services
+              {restaurantFooterData.columns[1].title}
             </h3>
 
             <div className="mb-6 mt-5 h-[2px] w-24 bg-gradient-to-r from-[#f5d58c] to-transparent" />
 
             <ul className="space-y-4">
               {services.map((service) => (
-                <li key={service}>
+                <li key={service.label}>
                   <Link
-                    href="/contact"
+                    href={service.href}
                     className="group flex items-center gap-3 text-[15px] text-white/85 transition-all duration-300 hover:translate-x-2 hover:text-[#f5d58c] sm:text-base"
                   >
                     <span className="text-xl text-[#f5d58c] transition-transform duration-300 group-hover:translate-x-1">
                       ›
                     </span>
-                    {service}
+                    {service.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Contact Information */}
+          
           <motion.div
             variants={itemVariants}
             className="border-l border-[#e5bd71]/40 pl-6 lg:pl-10"
           >
             <h3 className="font-serif text-2xl font-bold text-white sm:text-3xl">
-              Get in Touch
+              {restaurantFooterData.contactTitle}
             </h3>
 
             <div className="mb-6 mt-5 h-[2px] w-24 bg-gradient-to-r from-[#f5d58c] to-transparent" />
 
             <div className="space-y-6">
 
-              {/* Address */}
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=123+Food+Street+New+Delhi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-start gap-4"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f5d58c] text-xl text-[#381015] transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  ⌖
-                </span>
-
-                <span className="text-[14px] leading-6 text-white/90 transition-colors group-hover:text-[#f5d58c] sm:text-base">
-                  123 Food Street, Connaught Place,
-                  <br />
-                  New Delhi, India - 110001
-                </span>
-              </a>
-
-              {/* Phone */}
-              <a href="tel:+919876543210" className="group flex items-center gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f5d58c] text-xl text-[#381015] transition-all duration-300 group-hover:scale-110">
-                  ☎
-                </span>
-
-                <span className="text-[14px] text-white/90 transition-colors group-hover:text-[#f5d58c] sm:text-base">
-                  +91 98765 43210
-                </span>
-              </a>
-
-              {/* Email */}
-              <a
-                href="mailto:info@aureviarestaurant.com"
-                className="group flex items-center gap-4"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f5d58c] text-xl text-[#381015] transition-all duration-300 group-hover:scale-110"
+              
+              {footerContacts.map((contact) => (
+                <a
+                  key={contact.icon}
+                  href={contact.href}
+                  target={contact.icon === "map-pin" ? "_blank" : undefined}
+                  rel={contact.icon === "map-pin" ? "noopener noreferrer" : undefined}
+                  className={
+                    contact.icon === "map-pin"
+                      ? "group flex items-start gap-4"
+                      : "group flex items-center gap-4"
+                  }
                 >
-                  ✉
-                </span>
-
-                <span className="break-all text-[14px] text-white/90 transition-colors group-hover:text-[#f5d58c] sm:text-base">
-                  info@aureviarestaurant.com
-                </span>
-              </a>
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f5d58c] text-xl text-[#381015] transition-all duration-300 group-hover:scale-110">
+                    {contact.symbol}
+                  </span>
+                  <span
+                    className={
+                      contact.icon === "mail"
+                        ? "break-all text-[14px] text-white/90 transition-colors group-hover:text-[#f5d58c] sm:text-base"
+                        : contact.icon === "map-pin"
+                          ? "text-[14px] leading-6 text-white/90 transition-colors group-hover:text-[#f5d58c] sm:text-base"
+                          : "text-[14px] text-white/90 transition-colors group-hover:text-[#f5d58c] sm:text-base"
+                    }
+                  >
+                    {contact.icon === "map-pin"
+                      ? restaurantSiteData.addressLines.map((line, index) => (
+                          <span key={line}>
+                            {index > 0 && <br />}
+                            {line}
+                          </span>
+                        ))
+                      : contact.value}
+                  </span>
+                </a>
+              ))}
 
             </div>
           </motion.div>
@@ -255,11 +236,11 @@ export default function Footer() {
           </div>
 
           <p className="text-sm text-white/90 sm:text-base">
-            Copyright © 2026. All Rights Reserved. Powered By Lestow.
+            {restaurantFooterData.copyright}
           </p>
 
           <p className="text-xs tracking-wide text-[#f5d58c]/80">
-            Crafted with passion & love for great food.
+            {restaurantFooterData.tagline}
           </p>
         </motion.div>
       </div>

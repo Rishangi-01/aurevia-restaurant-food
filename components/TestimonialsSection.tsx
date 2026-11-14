@@ -4,36 +4,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Star, MapPin } from "lucide-react";
-
-const testimonials = [
-  {
-    id: 1,
-    name: "William Joe",
-    location: "New York",
-    image: "/images/customer-william.png",
-    alt: "William Joe",
-    review:
-      "The taste of food was really amazing. Every dish was fresh, beautifully presented and full of flavor. I will definitely visit again!",
-  },
-  {
-    id: 2,
-    name: "Theresa Tin",
-    location: "Chicago",
-    image: "/images/customer-theresa.png",
-    alt: "Theresa Tin",
-    review:
-      "Hygienic food & a warm environment. The staff was very friendly and the overall dining experience was wonderful. Highly recommended!",
-  },
-  {
-    id: 3,
-    name: "Michel Byrd",
-    location: "Denmark",
-    image: "/images/customer-michel.png",
-    alt: "Michel Byrd",
-    review:
-      "A perfect place for a family dinner! The food was delicious, service was quick, and the ambience was just great. Truly a memorable experience.",
-  },
-];
+import { restaurantTestimonialsData } from "@/data";
 
 export default function TestimonialsSection() {
   const reduceMotion = useReducedMotion();
@@ -41,6 +12,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
+      aria-label={restaurantTestimonialsData.ariaLabel}
       className="relative isolate overflow-hidden bg-[#fcf8f3] px-5 pb-24 pt-16 sm:px-8 sm:pb-28 sm:pt-20 lg:px-12 lg:pb-32 lg:pt-24 w-full"
     >
 
@@ -53,7 +25,7 @@ export default function TestimonialsSection() {
         className="pointer-events-none absolute left-0 top-14 z-0 h-[100px] w-[110px] sm:top-16 sm:h-[145px] sm:w-[155px] lg:h-[175px] lg:w-[180px]"
       >
         <Image
-          src="/images/testimonial-herbs.png"
+          src={restaurantTestimonialsData.images.herbs}
           alt=""
           fill
           sizes="180px"
@@ -73,7 +45,7 @@ export default function TestimonialsSection() {
         className="pointer-events-none absolute right-0 top-0 z-0 h-[115px] w-[140px] sm:h-[155px] sm:w-[190px] lg:h-[190px] lg:w-[225px]"
       >
         <Image
-          src="/images/testimonial-food.png"
+          src={restaurantTestimonialsData.images.food}
           alt=""
           fill
           sizes="225px"
@@ -93,7 +65,7 @@ export default function TestimonialsSection() {
         className="pointer-events-none absolute bottom-0 left-0 z-0 h-[130px] w-[155px] sm:h-[185px] sm:w-[210px] lg:h-[230px] lg:w-[260px]"
       >
         <Image
-          src="/images/testimonial-pasta.png"
+          src={restaurantTestimonialsData.images.pasta}
           alt=""
           fill
           sizes="260px"
@@ -129,7 +101,7 @@ export default function TestimonialsSection() {
           <span className="h-[1.5px] w-12 bg-[#bd842e] sm:w-16" />
 
           <p className="text-xs font-bold uppercase tracking-[5px] text-[#701522] sm:text-base sm:tracking-[7px]">
-            Testimonials
+            {restaurantTestimonialsData.eyebrow}
           </p>
 
           <span className="h-[1.5px] w-12 bg-[#bd842e] sm:w-16" />
@@ -143,9 +115,9 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-5 font-serif text-4xl font-bold leading-tight text-[#701522] sm:text-5xl md:text-6xl lg:text-[64px]"
         >
-          What Our Guests{" "}
+          {restaurantTestimonialsData.title}{" "}
           <span className="italic text-[#c18a24]">
-            Say
+            {restaurantTestimonialsData.highlight}
           </span>
         </motion.h2>
 
@@ -175,9 +147,9 @@ export default function TestimonialsSection() {
 
       <div className="relative z-10 mx-auto grid max-w-[1250px] grid-cols-1 gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-7 lg:gap-y-10">
 
-        {testimonials.map((item, index) => (
+        {restaurantTestimonialsData.items.map((item, index) => (
           <motion.div
-            key={item.id}
+            key={item.name}
             initial={
               reduceMotion
                 ? false
@@ -218,7 +190,7 @@ export default function TestimonialsSection() {
               <div className="relative h-full w-full overflow-hidden rounded-full">
                 <Image
                   src={item.image}
-                  alt={item.alt}
+                  alt={item.imageAlt}
                   fill
                   sizes="145px"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -230,8 +202,11 @@ export default function TestimonialsSection() {
                 STAR RATING
             ================================= */}
 
-            <div className="mb-3 mt-1 flex items-center justify-center gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              aria-label={restaurantTestimonialsData.ratingLabel}
+              className="mb-3 mt-1 flex items-center justify-center gap-0.5"
+            >
+              {Array.from({ length: item.rating }).map((_, i) => (
                 <Star
                   key={i}
                   size={27}
@@ -254,7 +229,7 @@ export default function TestimonialsSection() {
               </span>
 
               <p className="relative z-10 font-serif text-[17px] leading-[1.55] text-[#211b19] sm:text-[18px] lg:text-[19px]">
-                {item.review}
+                {item.quote}
               </p>
 
               {/* CLOSE QUOTE */}
@@ -282,7 +257,7 @@ export default function TestimonialsSection() {
               />
 
               <span className="text-base font-medium text-[#292929]">
-                {item.location}
+                {item.city}
               </span>
             </div>
 

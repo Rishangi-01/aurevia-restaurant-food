@@ -8,38 +8,16 @@ import {
   Armchair,
   ChefHat,
   PartyPopper,
+  type LucideIcon,
 } from "lucide-react";
+import { restaurantWhyChooseUsData } from "@/data";
 
-const features = [
-  {
-    id: 1,
-    title: "Hygienic Food",
-    description:
-      "Fresh, safe and hygienically prepared meals for your health.",
-    icon: ConciergeBell,
-  },
-  {
-    id: 2,
-    title: "Fresh Environment",
-    description:
-      "A clean, comfortable and welcoming dining atmosphere.",
-    icon: Armchair,
-  },
-  {
-    id: 3,
-    title: "Skilled Chefs",
-    description:
-      "Experienced chefs who bring taste and creativity to every dish.",
-    icon: ChefHat,
-  },
-  {
-    id: 4,
-    title: "Event & Party",
-    description:
-      "Perfect place for birthdays, family gatherings and special celebrations.",
-    icon: PartyPopper,
-  },
-];
+const featureIcons: Record<string, LucideIcon> = {
+  "concierge-bell": ConciergeBell,
+  armchair: Armchair,
+  "chef-hat": ChefHat,
+  "party-popper": PartyPopper,
+};
 
 export default function WhyChooseUs() {
   const reduceMotion = useReducedMotion();
@@ -58,7 +36,7 @@ export default function WhyChooseUs() {
         className="pointer-events-none absolute left-0 top-0 z-0 h-[125px] w-[145px] sm:h-[165px] sm:w-[185px] lg:left-2 lg:h-[190px] lg:w-[205px]"
       >
         <Image
-          src="/images/strength-leaves.png"
+          src={restaurantWhyChooseUsData.leavesImage}
           alt=""
           fill
           sizes="205px"
@@ -75,7 +53,7 @@ export default function WhyChooseUs() {
         className="pointer-events-none absolute right-0 top-0 z-0 h-[125px] w-[165px] sm:h-[165px] sm:w-[210px] lg:right-2 lg:h-[195px] lg:w-[245px]"
       >
         <Image
-          src="/images/strength-tomatoes.png"
+          src={restaurantWhyChooseUsData.tomatoesImage}
           alt=""
           fill
           sizes="245px"
@@ -112,7 +90,7 @@ export default function WhyChooseUs() {
           <span className="hidden h-[1.5px] w-16 bg-[#c18a36] sm:block" />
 
           <p className="text-xs font-bold uppercase tracking-[5px] text-[#701522] sm:text-base sm:tracking-[7px]">
-            Why Choose Us
+            {restaurantWhyChooseUsData.eyebrow}
           </p>
 
           <span className="hidden h-[1.5px] w-16 bg-[#c18a36] sm:block" />
@@ -126,9 +104,9 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-6 font-serif text-5xl font-bold leading-tight text-[#701522] sm:text-6xl md:text-7xl lg:text-[82px]"
         >
-          Our{" "}
+          {restaurantWhyChooseUsData.title}{" "}
           <span className="italic text-[#bd842e]">
-            Strength
+            {restaurantWhyChooseUsData.highlight}
           </span>
         </motion.h2>
 
@@ -155,12 +133,12 @@ export default function WhyChooseUs() {
 
       <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 gap-x-5 gap-y-16 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-10">
 
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
+        {restaurantWhyChooseUsData.items.map((feature, index) => {
+          const Icon = featureIcons[feature.icon];
 
           return (
             <motion.div
-              key={feature.id}
+              key={feature.title.join("-")}
               initial={{
                 opacity: 0,
                 y: 55,
@@ -211,7 +189,7 @@ export default function WhyChooseUs() {
               </motion.div>
 
               <h3 className="font-serif text-[23px] font-bold leading-tight text-[#701522] transition-colors duration-300 group-hover:text-[#b17a26] sm:text-[25px] lg:text-[26px]">
-                {feature.title}
+                {feature.title.join(" ")}
               </h3>
 
               <motion.div
@@ -226,7 +204,7 @@ export default function WhyChooseUs() {
               />
 
               <p className="mx-auto mt-4 max-w-[260px] text-[15px] leading-[1.75] text-[#292929] sm:text-base">
-                {feature.description}
+                {feature.text.join(" ")}
               </p>
 
               <span className="absolute bottom-0 left-1/2 h-[3px] w-0 -translate-x-1/2 rounded-full bg-[#b98330] transition-all duration-500 group-hover:w-1/2" />
@@ -240,7 +218,7 @@ export default function WhyChooseUs() {
       <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[190px] w-full sm:h-[230px] lg:h-[280px]">
 
         <Image
-          src="/images/strength-bg.png"
+          src={restaurantWhyChooseUsData.backgroundImage}
           alt=""
           fill
           sizes="100vw"

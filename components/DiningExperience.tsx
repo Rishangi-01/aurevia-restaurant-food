@@ -2,6 +2,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { restaurantCtaData } from "@/data";
 
 export default function DiningExperience() {
   const reduceMotion = useReducedMotion();
@@ -12,7 +13,7 @@ export default function DiningExperience() {
       className="relative isolate flex min-h-[380px] w-full items-center overflow-hidden bg-[#fcf5ed] bg-cover bg-center bg-no-repeat sm:min-h-[430px] lg:min-h-[480px] xl:min-h-[550px] lg:bg-size-[100%_100%]"
       style={{
         backgroundImage:
-          "url('/images/dining-experience-bg.png')",
+          `url('${restaurantCtaData.image}')`,
       }}
     >
       {/* CONTENT AREA */}
@@ -46,9 +47,9 @@ export default function DiningExperience() {
             }}
             className="font-serif text-3xl font-bold leading-[1.2] tracking-tight text-[#3c1013] sm:text-4xl md:text-5xl lg:text-[49px] xl:text-[56px]"
           >
-            Experience Exceptional{" "}
+            {restaurantCtaData.title[0]}{" "}
             <span className="italic text-[#781b2d]">
-              Dining
+              {restaurantCtaData.title[1]}
             </span>
           </motion.h2>
 
@@ -82,8 +83,7 @@ export default function DiningExperience() {
             }}
             className="mx-auto max-w-[650px] text-base leading-[1.7] text-[#352525] sm:text-lg md:text-xl lg:text-[22px]"
           >
-            Savor delicious food, a warm ambiance, and
-            hospitality that makes every visit special.
+            {restaurantCtaData.text}
           </motion.p>
 
         </div>

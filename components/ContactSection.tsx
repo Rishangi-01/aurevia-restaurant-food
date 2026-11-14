@@ -3,27 +3,32 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { restaurantContactData, restaurantSiteData } from "@/data";
 
-const contactDetails = [
-  {
-    symbol: "◎",
-    title: "Our Location",
-    lines: [
-      "742 Evergreen Terrace (or 123 Main St), Springfield, IL (Illinois),",
-      "62704, United States",
-    ],
-  },
-  {
-    symbol: "☎",
-    title: "Call Us",
-    lines: ["+1 00000000"],
-  },
-  {
-    symbol: "✉",
-    title: "Email Us",
-    lines: ["info@XYZ.com"],
-  },
-];
+const contactDetails = [...restaurantContactData.cards]
+  .sort(
+    (first, second) =>
+      ["address", "phones", "emails"].indexOf(first.field) -
+      ["address", "phones", "emails"].indexOf(second.field),
+  )
+  .map((item) => ({
+    ...item,
+    lines:
+      item.field === "address"
+        ? restaurantSiteData.addressLines
+        : item.field === "phones"
+          ? restaurantSiteData.phones
+          : restaurantSiteData.emails,
+  }));
+const contactTextBreak = restaurantContactData.text.indexOf(" We’re ");
+const contactIntro =
+  contactTextBreak < 0
+    ? restaurantContactData.text
+    : restaurantContactData.text.slice(0, contactTextBreak);
+const contactContinuation =
+  contactTextBreak < 0
+    ? ""
+    : restaurantContactData.text.slice(contactTextBreak + 1);
 
 export default function ContactSection() {
   const reduceMotion = useReducedMotion();
@@ -42,7 +47,7 @@ export default function ContactSection() {
       id="contact"
       className="relative isolate overflow-hidden bg-[#fcf7f1] bg-no-repeat px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24 lg:bg-size-[100%_100%]"
       style={{
-        backgroundImage: "url('/images/contact-background.png')",
+        backgroundImage: `url('${restaurantContactData.form.backgroundImage}')`,
       }}
     >
 
@@ -65,7 +70,7 @@ export default function ContactSection() {
           <span className="h-[2px] w-12 bg-[#c38b36] sm:w-16" />
 
           <p className="text-xs font-bold uppercase tracking-[5px] text-[#741b29] sm:text-base sm:tracking-[7px]">
-            Get In Touch
+            {restaurantContactData.eyebrow}
           </p>
 
           <span className="h-[2px] w-12 bg-[#c38b36] sm:w-16" />
@@ -78,14 +83,18 @@ export default function ContactSection() {
 
         {/* Heading */}
         <h2 className="font-serif text-5xl font-bold leading-tight text-[#741b29] sm:text-6xl md:text-7xl lg:text-[82px]">
-          Contact Us
+          {restaurantContactData.title.join(" ")}
         </h2>
 
         {/* Description */}
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#393331] sm:text-base md:text-lg">
-          Have a question about our menu, reservations, or special events?
-          <br className="hidden sm:block" />
-          We’re here to help, contact us today.
+          {contactIntro}
+          {contactContinuation && (
+            <>
+              <br className="hidden sm:block" />
+              {contactContinuation}
+            </>
+          )}
         </p>
       </motion.div>
 
@@ -177,13 +186,13 @@ export default function ContactSection() {
               {/* Name */}
               <div className="group relative">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[25px] text-[#742532]">
-                  ♙
+                  {restaurantContactData.form.fields.firstName.symbol}
                 </span>
 
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder={restaurantContactData.form.fields.firstName.placeholder}
                   required
                   className="h-[66px] w-full rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] pl-16 pr-4 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -192,13 +201,13 @@ export default function ContactSection() {
               {/* Email */}
               <div className="group relative">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[24px] text-[#742532]">
-                  ✉
+                  {restaurantContactData.form.fields.email.symbol}
                 </span>
 
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder={restaurantContactData.form.fields.email.placeholder}
                   required
                   className="h-[66px] w-full rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] pl-16 pr-4 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -207,13 +216,13 @@ export default function ContactSection() {
               {/* Phone */}
               <div className="group relative sm:col-span-2">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[25px] text-[#742532]">
-                  ☎
+                  {restaurantContactData.form.fields.phone.symbol}
                 </span>
 
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="Phone Number"
+                  placeholder={restaurantContactData.form.fields.phone.placeholder}
                   required
                   className="h-[66px] w-full rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] pl-16 pr-4 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -222,13 +231,13 @@ export default function ContactSection() {
               {/* Message */}
               <div className="group relative sm:col-span-2">
                 <span className="absolute left-5 top-5 text-[25px] text-[#742532]">
-                  ♧
+                  {restaurantContactData.form.fields.message.symbol}
                 </span>
 
                 <textarea
                   name="message"
                   rows={5}
-                  placeholder="Your Message"
+                  placeholder={restaurantContactData.form.fields.message.placeholder}
                   required
                   className="min-h-[165px] w-full resize-none rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] py-5 pl-16 pr-5 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -243,7 +252,7 @@ export default function ContactSection() {
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}
               className="mt-6 w-full rounded-xl border border-[#e6bd72] bg-gradient-to-r from-[#d5a04d] to-[#f0c878] px-6 py-4 font-semibold uppercase tracking-[2px] text-[#57111d] shadow-lg transition-all duration-300 hover:shadow-[0_8px_25px_rgba(0,0,0,0.2)]"
             >
-              Send Message <span className="ml-2">→</span>
+              {restaurantContactData.form.submitLabel} <span className="ml-2">→</span>
             </motion.button>
 
           </form>
@@ -262,8 +271,8 @@ export default function ContactSection() {
         >
 
           <Image
-            src="/images/gallery-restaurant.png"
-            alt="Elegant Aurevia restaurant dining area"
+            src={restaurantContactData.hero.image.src}
+            alt={restaurantContactData.hero.image.alt}
             fill
             priority={false}
             sizes="(max-width: 768px) 100vw, 35vw"

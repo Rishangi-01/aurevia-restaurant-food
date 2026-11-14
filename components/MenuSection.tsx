@@ -4,57 +4,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChefHat } from "lucide-react";
-
-const menuItems = [
-  {
-    id: 1,
-    name: "Classic Pancakes",
-    description:
-      "Fluffy pancakes served with fresh berries and honey.",
-    price: "₹299",
-    image: "/images/menu-pancakes.png",
-  },
-  {
-    id: 2,
-    name: "Cheese Omelette",
-    description:
-      "A fluffy omelette filled with melted cheese and fresh herbs.",
-    price: "₹249",
-    image: "/images/menu-omelette.png",
-  },
-  {
-    id: 3,
-    name: "Veg Sandwich",
-    description:
-      "Crispy toasted sandwich with fresh vegetables and house sauce.",
-    price: "₹199",
-    image: "/images/menu-sandwich.png",
-  },
-  {
-    id: 4,
-    name: "Healthy Fruit Bowl",
-    description:
-      "A refreshing mix of seasonal fruits, yogurt and crunchy granola.",
-    price: "₹279",
-    image: "/images/menu-fruit-bowl.png",
-  },
-  {
-    id: 5,
-    name: "Poha",
-    description:
-      "Light and flavorful flattened rice cooked with fresh spices.",
-    price: "₹229",
-    image: "/images/menu-poha.png",
-  },
-  {
-    id: 6,
-    name: "Idli Sambar",
-    description:
-      "Soft steamed idlis served with traditional sambar and chutney.",
-    price: "₹199",
-    image: "/images/menu-idli.png",
-  },
-];
+import { restaurantMenuData } from "@/data";
 
 const containerVariants = {
   hidden: {},
@@ -83,7 +33,7 @@ const itemVariants = {
 function MenuItem({
   item,
 }: {
-  item: (typeof menuItems)[number];
+  item: (typeof restaurantMenuData.items)[number];
 }) {
   return (
     <motion.div
@@ -94,8 +44,8 @@ function MenuItem({
       {/* FOOD IMAGE */}
       <div className="relative h-[105px] w-[115px] shrink-0 overflow-hidden rounded-[20px] shadow-[0_5px_15px_rgba(80,35,15,0.12)] sm:h-[120px] sm:w-[145px] lg:h-[120px] lg:w-[155px]">
         <Image
-          src={item.image}
-          alt={item.name}
+          src={item.homeImage}
+          alt={item.homeImageAlt ?? item.title}
           fill
           sizes="(max-width: 640px) 115px, 155px"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -109,7 +59,7 @@ function MenuItem({
         {/* NAME + PRICE */}
         <div className="flex min-w-0 items-baseline gap-2">
           <h3 className="shrink-0 font-serif text-[17px] font-bold leading-tight text-[#701522] transition-colors duration-300 group-hover:text-[#b58538] sm:text-xl lg:text-[23px]">
-            {item.name}
+            {item.title}
           </h3>
 
           <div className="relative bottom-1 min-w-[10px] flex-1 border-b-2 border-dotted border-[#c18c42]" />
@@ -121,7 +71,7 @@ function MenuItem({
 
         {/* DESCRIPTION */}
         <p className="mt-2 text-[13px] leading-[1.55] text-[#363636] sm:text-sm lg:text-[16px] lg:leading-[1.55]">
-          {item.description}
+          {item.text}
         </p>
       </div>
     </motion.div>
@@ -129,8 +79,8 @@ function MenuItem({
 }
 
 export default function MenuSection() {
-  const leftItems = menuItems.slice(0, 3);
-  const rightItems = menuItems.slice(3, 6);
+  const leftItems = restaurantMenuData.items.slice(0, 3);
+  const rightItems = restaurantMenuData.items.slice(3, 6);
 
   return (
     <section
@@ -147,7 +97,7 @@ export default function MenuSection() {
         className="pointer-events-none absolute -left-3 top-4 z-0 h-[125px] w-[155px] sm:left-4 sm:top-5 sm:h-[155px] sm:w-[190px] lg:left-7 lg:top-5 lg:h-[175px] lg:w-[205px]"
       >
         <Image
-          src="/images/menu-leaves.png"
+          src={restaurantMenuData.decorationImages.leaves}
           alt=""
           fill
           sizes="205px"
@@ -163,7 +113,7 @@ export default function MenuSection() {
         className="pointer-events-none absolute -right-8 -top-8 z-0 h-[155px] w-[240px] overflow-hidden rounded-bl-[70px] sm:h-[190px] sm:w-[300px] lg:h-[220px] lg:w-[360px]"
       >
         <Image
-          src="/images/menu-decoration.png"
+          src={restaurantMenuData.decorationImages.decoration}
           alt=""
           fill
           sizes="360px"
@@ -198,7 +148,7 @@ export default function MenuSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-xs font-bold uppercase tracking-[6px] text-[#701522] sm:text-sm sm:tracking-[8px]"
         >
-          Special Selection
+          {restaurantMenuData.eyebrow}
         </motion.p>
 
         {/* SMALL GOLD LINE */}
@@ -218,9 +168,9 @@ export default function MenuSection() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="mt-5 font-serif text-[39px] font-bold leading-tight text-[#701522] sm:text-5xl md:text-6xl lg:text-[70px]"
         >
-          Our Delicious{" "}
+          {restaurantMenuData.title}{" "}
           <span className="italic text-[#bd8b3f]">
-            Menu
+            {restaurantMenuData.highlight}
           </span>
         </motion.h2>
 
@@ -248,13 +198,13 @@ export default function MenuSection() {
 
         <div className="flex flex-col gap-7 sm:gap-8 lg:pr-8 xl:pr-10">
           {leftItems.map((item) => (
-            <MenuItem key={item.id} item={item} />
+            <MenuItem key={item.slug} item={item} />
           ))}
         </div>
 
         <div className="border-l-[1.5px] border-[#c18c37] flex flex-col gap-7 border-t border-[#c18c37]/40 pt-8 sm:gap-8 lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-10">
           {rightItems.map((item) => (
-            <MenuItem key={item.id} item={item} />
+            <MenuItem key={item.slug} item={item} />
           ))}
         </div>
 

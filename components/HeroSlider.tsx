@@ -10,6 +10,7 @@ import {
   Pagination,
   EffectFade,
 } from "swiper/modules";
+import { restaurantHeroData } from "@/data";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -18,39 +19,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-const slides = [
-  {
-    id: 1,
-    image: "/images/hero-1.png",
-    subtitle: "Welcome To",
-    title: "Aurevia",
-    restaurant: "Restaurant",
-    description:
-      "Experience a perfect blend of great food, warm ambience and exceptional hospitality.",
-  },
-  {
-    id: 2,
-    image: "/images/hero-2.png",
-    subtitle: "Discover The Taste Of",
-    title: "Excellence",
-    restaurant: "Fine Dining",
-    description:
-      "Delight in extraordinary flavours crafted with passion, freshness and creativity.",
-  },
-  {
-    id: 3,
-    image: "/images/hero-3.png",
-    subtitle: "A Celebration Of",
-    title: "Flavours",
-    restaurant: "At Aurevia",
-    description:
-      "Where beautiful moments, delicious cuisine and unforgettable memories come together.",
-  },
-];
-
 export default function HeroSlider() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#270509]">
+    <section id="home" className="relative w-full overflow-hidden bg-[#270509]">
 
       <Swiper
         modules={[
@@ -81,8 +52,8 @@ export default function HeroSlider() {
         className="aurevia-swiper group relative h-[600px] w-full sm:h-[650px] lg:h-[calc(100vh-90px)] lg:min-h-[620px] lg:max-h-[850px]"
       >
 
-        {slides.map((slide, index) => (
-          <SwiperSlide key={slide.id} className="relative">
+        {restaurantHeroData.slides.map((slide, index) => (
+          <SwiperSlide key={slide.image} className="relative">
 
             {({ isActive }) => (
               <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
@@ -101,7 +72,7 @@ export default function HeroSlider() {
                 >
                   <Image
                     src={slide.image}
-                    alt={`${slide.title} restaurant dining`}
+                    alt={slide.imageAlt}
                     fill
                     priority={index === 0}
                     sizes="100vw"
@@ -134,7 +105,7 @@ export default function HeroSlider() {
                       fontFamily: "'Brush Script MT', cursive",
                     }}
                   >
-                    {slide.subtitle}
+                    {slide.eyebrow}
                   </motion.p>
 
                   
@@ -151,7 +122,7 @@ export default function HeroSlider() {
                     }}
                     className="font-serif text-7xl font-medium leading-none tracking-wide text-[#fffaf0] sm:text-8xl md:text-9xl lg:text-[150px]"
                   >
-                    {slide.title}
+                    {slide.title[0]}
                   </motion.h1>
 
                   
@@ -171,7 +142,7 @@ export default function HeroSlider() {
                     <span className="h-[2px] flex-1 bg-[#e7b75c]" />
 
                     <span className="font-serif text-3xl tracking-[2px] text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                      {slide.restaurant}
+                      {slide.title[1]}
                     </span>
 
                     <span className="h-[2px] flex-1 bg-[#e7b75c]" />
@@ -191,7 +162,7 @@ export default function HeroSlider() {
                     }}
                     className="mt-5 max-w-[800px] text-base font-medium leading-7 tracking-wide text-white/95 sm:text-lg md:text-xl lg:text-[28px] lg:leading-[1.6]"
                   >
-                    {slide.description}
+                    {slide.text}
                   </motion.p>
 
                 </div>
@@ -204,14 +175,14 @@ export default function HeroSlider() {
 
       <button
         type="button"
-        aria-label="Previous slide"
+        aria-label={restaurantHeroData.previousLabel}
         className="aurevia-prev absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#fffaf0] text-[#831329] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#97152e] hover:text-white sm:left-7 sm:h-14 sm:w-14 lg:left-8 lg:h-16 lg:w-16"
       >
         <ChevronLeft size={32} strokeWidth={2.5} />
       </button>
       <button
         type="button"
-        aria-label="Next slide"
+        aria-label={restaurantHeroData.nextLabel}
         className="aurevia-next absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#fffaf0] text-[#831329] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#97152e] hover:text-white sm:right-7 sm:h-14 sm:w-14 lg:right-8 lg:h-16 lg:w-16"
       >
         <ChevronRight size={32} strokeWidth={2.5} />

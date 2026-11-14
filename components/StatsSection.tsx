@@ -9,39 +9,17 @@ import {
   Utensils,
   ChefHat,
   Trophy,
+  type LucideIcon,
 } from "lucide-react";
 import { useRef } from "react";
+import { restaurantStatsData } from "@/data";
 
-const stats = [
-  {
-    id: 1,
-    number: 150,
-    suffix: "+",
-    label: "DAILY ORDERS",
-    icon: ConciergeBell,
-  },
-  {
-    id: 2,
-    number: 82,
-    suffix: "+",
-    label: "SPECIAL DISHES",
-    icon: Utensils,
-  },
-  {
-    id: 3,
-    number: 35,
-    suffix: "+",
-    label: "EXPERT CHEFS",
-    icon: ChefHat,
-  },
-  {
-    id: 4,
-    number: 10,
-    suffix: "+",
-    label: "AWARDS WON",
-    icon: Trophy,
-  },
-];
+const statIcons: Record<string, LucideIcon> = {
+  "concierge-bell": ConciergeBell,
+  utensils: Utensils,
+  "chef-hat": ChefHat,
+  trophy: Trophy,
+};
 
 function AnimatedCounter({
   value,
@@ -101,6 +79,7 @@ function AnimatedCounter({
 }
 
 export default function StatsSection() {
+  const stats = restaurantStatsData.items;
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const isInView = useInView(sectionRef, {
@@ -119,8 +98,8 @@ export default function StatsSection() {
 
       <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/stats-bg.png"
-          alt="Warm and elegant Aurevia restaurant interior"
+          src={restaurantStatsData.backgroundImage}
+          alt={restaurantStatsData.backgroundAlt}
           fill
           sizes="100vw"
           className="object-cover object-center"
@@ -171,11 +150,13 @@ export default function StatsSection() {
         <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4">
 
           {stats.map((stat, index) => {
-            const Icon = stat.icon;
+            const Icon = statIcons[stat.icon];
+            const number = Number.parseInt(stat.value, 10);
+            const suffix = stat.value.slice(String(number).length);
 
             return (
               <motion.div
-                key={stat.id}
+                key={stat.icon}
                 initial={{
                   opacity: 0,
                   y: 35,
@@ -239,8 +220,8 @@ export default function StatsSection() {
                 {/* NUMBER */}
                 <h3 className="font-serif text-5xl font-medium leading-none tracking-wide text-white sm:text-6xl lg:text-[76px]">
                   <AnimatedCounter
-                    value={stat.number}
-                    suffix={stat.suffix}
+                    value={number}
+                    suffix={suffix}
                     start={isInView}
                   />
                 </h3>
