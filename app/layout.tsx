@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: restaurantSiteData.metadata.title,
   description: restaurantSiteData.metadata.description,
   icons: {
-    icon: "/favicon.jpg"
+    icon: "/favicon.webp"
   }
 };
 

@@ -9,6 +9,7 @@ import {
   Utensils,
   ChefHat,
   Trophy,
+  type LucideIcon,
 } from "lucide-react";
 import { useRef } from "react";
 import { restaurantStatsData } from "@/data";
@@ -19,6 +20,21 @@ const statIcons = {
   "chef-hat": ChefHat,
   trophy: Trophy,
 };
+
+function getStatIcon(icon: string): LucideIcon {
+  switch (icon) {
+    case "concierge-bell":
+      return statIcons["concierge-bell"];
+    case "utensils":
+      return statIcons.utensils;
+    case "chef-hat":
+      return statIcons["chef-hat"];
+    case "trophy":
+      return statIcons.trophy;
+    default:
+      throw new Error(`Unsupported statistics icon: ${icon}`);
+  }
+}
 
 function AnimatedCounter({
   value,
@@ -149,7 +165,7 @@ export default function StatsSection() {
         <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4">
 
           {stats.map((stat, index) => {
-            const Icon = statIcons[stat.icon];
+            const Icon = getStatIcon(stat.icon);
             const number = Number.parseInt(stat.value, 10);
             const suffix = stat.value.slice(String(number).length);
 
