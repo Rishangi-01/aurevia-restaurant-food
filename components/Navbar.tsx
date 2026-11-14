@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { restaurantHeaderData, restaurantSiteData } from "@/data";
+import Image from "next/image";
 
 const navLinks = [...restaurantHeaderData.links, restaurantHeaderData.button].map(
   (link) => ({
@@ -67,7 +68,7 @@ useEffect(() => {
 
       <nav
         aria-label={restaurantHeaderData.ariaLabel}
-        className="mx-auto flex h-[82px] max-w-[1900px] items-center justify-between px-5 sm:px-8 lg:h-[90px] lg:px-12 xl:px-16"
+        className="mx-auto flex h-[82px] max-w-[1600px] items-center justify-between lg:h-[90px] px-6 sm:px-10 lg:px-16"
       >
 
         <Link
@@ -75,28 +76,14 @@ useEffect(() => {
           className="group flex shrink-0 items-center"
           aria-label={restaurantSiteData.alt}
         >
-          <div className="flex flex-col items-center">
-
-            <motion.span
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="font-serif text-[38px] font-bold italic leading-[0.9] tracking-[-2px] text-[#94152c] sm:text-[44px] lg:text-[50px]"
-            >
-              {restaurantSiteData.name}
-            </motion.span>
-
-            <div className="mt-2 flex w-full items-center gap-2">
-              <span className="h-[1.5px] flex-1 bg-[#b58a55]" />
-
-              <span className="whitespace-nowrap font-serif text-[9px] font-bold tracking-[5px] text-[#48291f] sm:text-[10px]">
-                {restaurantLabel}
-              </span>
-
-              <span className="h-[1.5px] flex-1 bg-[#b58a55]" />
-            </div>
-
-          </div>
+          <Image
+            src={restaurantSiteData.logo}
+            alt={restaurantSiteData.alt}
+            width={450}
+            height={115}
+            priority
+            className="h-auto w-[230px] object-contain sm:w-[280px] lg:w-[320px] xl:w-[215px]"
+          />
         </Link>
 
         

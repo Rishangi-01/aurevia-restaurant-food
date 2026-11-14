@@ -45,7 +45,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden bg-[#fcf7f1] bg-no-repeat px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24 lg:bg-size-[100%_100%]"
+      className="relative isolate overflow-hidden bg-[#fcf7f1] bg-no-repeat py-16 sm:py-20 lg:py-24 lg:bg-size-[100%_100%] px-6 sm:px-10 lg:px-16"
       style={{
         backgroundImage: `url('${restaurantContactData.form.backgroundImage}')`,
       }}
@@ -102,7 +102,7 @@ export default function ContactSection() {
           MAIN CONTACT CONTENT
       ===================================== */}
 
-      <div className="relative z-10 mx-auto grid max-w-[1500px] grid-cols-1 items-center gap-8 lg:grid-cols-[0.95fr_1.5fr_0.95fr] lg:gap-0">
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-8 lg:grid-cols-[0.95fr_1.5fr_0.95fr] lg:gap-0">
 
         {/* =====================================
             LEFT CONTACT INFORMATION

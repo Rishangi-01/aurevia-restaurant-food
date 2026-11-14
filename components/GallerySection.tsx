@@ -11,10 +11,10 @@ export default function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative overflow-hidden bg-[#fcf8f3] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24 w-full"
+      className="relative overflow-hidden bg-[#fcf8f3] py-16 sm:py-20 lg:py-24 w-full px-6 sm:px-10 lg:px-16"
     >
 
-      <div className="mx-auto max-w-[1450px]">
+      <div className="mx-auto max-w-[1600px]">
 
         <div className="mb-12 text-center sm:mb-14 lg:mb-16">
 
@@ -70,7 +70,7 @@ export default function GallerySection() {
         </div>
 
 
-        <div className="relative mx-auto max-w-[1350px] p-3 sm:p-4">
+        <div className="relative mx-auto max-w-[1600px] p-3 sm:p-4">
 
 
           <div className="pointer-events-none absolute left-0 top-0 z-20 h-24 w-24 border-l-[4px] border-t-[4px] border-[#bd842e] sm:h-32 sm:w-32" />

@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: restaurantSiteData.metadata.title,
   description: restaurantSiteData.metadata.description,
+  icons: {
+    icon: "/favicon.jpg"
+  }
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

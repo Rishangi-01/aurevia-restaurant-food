@@ -15,7 +15,7 @@ export default function ChefsSection() {
   return (
     <section
       id="chefs"
-      className="relative isolate overflow-hidden bg-[#fcf8f3] px-5 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-24 w-full"
+      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24 w-full px-6 sm:px-10 lg:px-16"
     >
 
 
@@ -142,7 +142,7 @@ export default function ChefsSection() {
 
 
 
-      <div className="relative z-10 mx-auto grid max-w-[1250px] grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-8">
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-8">
 
         {restaurantTeamData.members.map((chef, index) => (
           <motion.div
@@ -173,7 +173,7 @@ export default function ChefsSection() {
                 ? undefined
                 : { y: -8 }
             }
-            className="group relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[25px] border-[1.5px] border-[#d49a2e] bg-[#fcf8f3] shadow-[0_8px_24px_rgba(89,27,20,0.07)] transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(89,27,20,0.15)]"
+            className="group relative mx-auto w-full max-w-[450px] overflow-hidden rounded-[25px] border-[1.5px] border-[#d49a2e] bg-[#fcf8f3] shadow-[0_8px_24px_rgba(89,27,20,0.07)] transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(89,27,20,0.15)]"
           >
 
 

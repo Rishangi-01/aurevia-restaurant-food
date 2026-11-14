@@ -1,17 +1,23 @@
-
 "use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { restaurantFooterData, restaurantSiteData } from "@/data";
+import Image from "next/image";
 
 const quickLinks = restaurantFooterData.columns[0].links;
 const services = restaurantFooterData.columns[1].links;
 const socialLinks = restaurantSiteData.socials;
-const footerContacts = [...restaurantFooterData.contactDetails].sort((first, second) => {
-  const displayOrder: Record<string, number> = { "map-pin": 0, phone: 1, mail: 2 };
-  return displayOrder[first.icon] - displayOrder[second.icon];
-});
+const footerContacts = [...restaurantFooterData.contactDetails].sort(
+  (first, second) => {
+    const displayOrder: Record<string, number> = {
+      "map-pin": 0,
+      phone: 1,
+      mail: 2,
+    };
+    return displayOrder[first.icon] - displayOrder[second.icon];
+  },
+);
 const restaurantLabel = restaurantSiteData.alt
   .replace(restaurantSiteData.name, "")
   .trim();
@@ -39,16 +45,13 @@ export default function Footer() {
     <footer
       className="relative isolate overflow-hidden text-white"
       style={{
-        backgroundImage:
-          `linear-gradient(rgba(20, 7, 4, 0.48), rgba(20, 7, 4, 0.55)), url('${restaurantSiteData.bgImage}')`,
+        backgroundImage: `linear-gradient(rgba(20, 7, 4, 0.48), rgba(20, 7, 4, 0.55)), url('${restaurantSiteData.bgImage}')`,
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}
     >
-      
       <div className="relative z-10 mx-auto max-w-[1600px] px-6 pb-12 pt-20 sm:px-10 lg:px-16 lg:pb-16 lg:pt-24">
-
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -56,33 +59,22 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.15 }}
           className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_0.85fr_0.95fr_1.4fr] lg:gap-10"
         >
-
-          
           <motion.div variants={itemVariants} className="lg:pr-8">
-
             <Link href="/" className="group inline-flex flex-col items-center">
-              <span className="mb-1 text-4xl text-[#f5d58c] transition-transform duration-500 group-hover:rotate-12">
-                ♨
-              </span>
-
-              <span className="font-serif text-5xl tracking-tight text-white sm:text-6xl">
-                {restaurantSiteData.name}
-              </span>
-
-              <div className="mt-2 flex w-full items-center gap-3">
-                <span className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#e5bd71]" />
-                <span className="text-xs font-semibold tracking-[0.35em] text-[#f5d58c]">
-                  {restaurantLabel}
-                </span>
-                <span className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#e5bd71]" />
-              </div>
+              <Image
+                src={restaurantSiteData.logoWhite}
+                alt={restaurantSiteData.alt}
+                width={450}
+                height={115}
+                priority
+                className="h-auto w-[230px] object-contain sm:w-[280px] lg:w-[320px] xl:w-[275px]"
+              />
             </Link>
 
             <p className="mt-7 max-w-[380px] text-[15px] leading-7 text-white/85 sm:text-base">
               {restaurantFooterData.about}
             </p>
 
-          
             <div className="mt-7 flex items-center gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -108,7 +100,6 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          
           <motion.div
             variants={itemVariants}
             className="border-l border-[#e5bd71]/40 pl-6 lg:pl-10"
@@ -136,7 +127,6 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          
           <motion.div
             variants={itemVariants}
             className="border-l border-[#e5bd71]/40 pl-6 lg:pl-10"
@@ -164,7 +154,6 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          
           <motion.div
             variants={itemVariants}
             className="border-l border-[#e5bd71]/40 pl-6 lg:pl-10"
@@ -176,14 +165,16 @@ export default function Footer() {
             <div className="mb-6 mt-5 h-[2px] w-24 bg-gradient-to-r from-[#f5d58c] to-transparent" />
 
             <div className="space-y-6">
-
-              
               {footerContacts.map((contact) => (
                 <a
                   key={contact.icon}
                   href={contact.href}
                   target={contact.icon === "map-pin" ? "_blank" : undefined}
-                  rel={contact.icon === "map-pin" ? "noopener noreferrer" : undefined}
+                  rel={
+                    contact.icon === "map-pin"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   className={
                     contact.icon === "map-pin"
                       ? "group flex items-start gap-4"
@@ -213,15 +204,12 @@ export default function Footer() {
                   </span>
                 </a>
               ))}
-
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      
       <div className="relative px-5 py-7 sm:py-8">
-
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}

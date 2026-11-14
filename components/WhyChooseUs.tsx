@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="relative isolate overflow-hidden bg-[#fcf8f3] px-5 pb-36 pt-20 sm:px-8 sm:pb-40 sm:pt-24 lg:px-12 lg:pb-48 lg:pt-28 w-full"
+      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-36 pt-20 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-28 w-full px-6 sm:px-10 lg:px-16"
     >
 
       <motion.div

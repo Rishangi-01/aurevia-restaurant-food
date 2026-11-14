@@ -85,9 +85,8 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-      className="relative isolate overflow-hidden bg-[#fdf8f2] px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#fdf8f2] py-20 sm:py-24 lg:py-28 w-full px-6 sm:px-10 lg:px-16"
     >
-      {/* ================= BACKGROUND DECORATIONS ================= */}
 
       <motion.div
         initial={{ opacity: 0, x: -35, rotate: -15 }}
@@ -193,7 +192,7 @@ export default function MenuSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="relative z-10 mx-auto grid max-w-[1450px] gap-8 lg:grid-cols-2 lg:gap-0"
+        className="relative z-10 mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-2 lg:gap-0"
       >
 
         <div className="flex flex-col gap-7 sm:gap-8 lg:pr-8 xl:pr-10">

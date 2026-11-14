@@ -30,14 +30,14 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#fcf9f5] px-5 py-20 sm:px-8 lg:px-12 lg:py-28 w-full"
+      className="relative overflow-hidden bg-[#fcf9f5] py-20 lg:py-28 w-full px-6 sm:px-10 lg:px-16"
     >
       
       <div className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-[#c49348]/[0.06] blur-3xl" />
 
       <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-[#791625]/[0.04] blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-[1450px] items-center gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-20">
+      <div className="relative mx-auto grid max-w-[1600px] items-center gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-20">
 
       
         <motion.div

@@ -10,7 +10,7 @@ export default function DiningExperience() {
   return (
     <section
       id="dining-experience"
-      className="relative isolate flex min-h-[380px] w-full items-center overflow-hidden bg-[#fcf5ed] bg-cover bg-center bg-no-repeat sm:min-h-[430px] lg:min-h-[480px] xl:min-h-[550px] lg:bg-size-[100%_100%]"
+      className="relative isolate flex min-h-[380px] w-full items-center overflow-hidden bg-[#fcf5ed] bg-cover bg-center bg-no-repeat sm:min-h-[430px] lg:min-h-[480px] xl:min-h-[550px] lg:bg-size-[100%_100%] max-w-[1600px]"
       style={{
         backgroundImage:
           `url('${restaurantCtaData.image}')`,

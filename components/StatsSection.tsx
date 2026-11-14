@@ -9,12 +9,11 @@ import {
   Utensils,
   ChefHat,
   Trophy,
-  type LucideIcon,
 } from "lucide-react";
 import { useRef } from "react";
 import { restaurantStatsData } from "@/data";
 
-const statIcons: Record<string, LucideIcon> = {
+const statIcons = {
   "concierge-bell": ConciergeBell,
   utensils: Utensils,
   "chef-hat": ChefHat,
@@ -92,7 +91,7 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[420px] w-full items-center overflow-hidden bg-[#260609] px-4 py-16 sm:px-8 lg:min-h-[480px] lg:py-20"
+      className="relative isolate flex min-h-[420px] w-full items-center overflow-hidden bg-[#260609] py-16 lg:min-h-[480px] lg:py-20 px-6 sm:px-10 lg:px-16"
     >
       {/* ================= BACKGROUND IMAGE ================= */}
 

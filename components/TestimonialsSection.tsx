@@ -13,7 +13,7 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       aria-label={restaurantTestimonialsData.ariaLabel}
-      className="relative isolate overflow-hidden bg-[#fcf8f3] px-5 pb-24 pt-16 sm:px-8 sm:pb-28 sm:pt-20 lg:px-12 lg:pb-32 lg:pt-24 w-full"
+      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-32 lg:pt-24 w-full"
     >
 
 
@@ -33,9 +33,7 @@ export default function TestimonialsSection() {
         />
       </motion.div>
 
-      {/* =====================================
-          TOP RIGHT FOOD IMAGE
-      ===================================== */}
+
 
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, x: 35, y: -20 }}
@@ -145,7 +143,7 @@ export default function TestimonialsSection() {
           TESTIMONIAL CARDS
       ===================================== */}
 
-      <div className="relative z-10 mx-auto grid max-w-[1250px] grid-cols-1 gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-7 lg:gap-y-10">
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-7 lg:gap-y-10 px-6 sm:px-10 lg:px-16">
 
         {restaurantTestimonialsData.items.map((item, index) => (
           <motion.div
@@ -171,7 +169,7 @@ export default function TestimonialsSection() {
             whileHover={
               reduceMotion ? undefined : { y: -8 }
             }
-            className="group relative mx-auto flex min-h-[390px] w-full max-w-[420px] flex-col items-center rounded-[27px] border-[1.5px] border-[#dda33e] bg-white/45 px-5 pb-7 pt-[88px] text-center shadow-[0_8px_25px_rgba(112,21,34,0.04)] transition-all duration-500 hover:bg-white/80 hover:shadow-[0_18px_40px_rgba(112,21,34,0.12)] sm:min-h-[405px] sm:px-6 sm:pt-[90px] lg:min-h-[420px]"
+            className="group relative mx-auto flex min-h-[390px] w-full max-w-[450px] flex-col items-center rounded-[27px] border-[1.5px] border-[#dda33e] bg-white/45 px-5 pb-7 pt-[88px] text-center shadow-[0_8px_25px_rgba(112,21,34,0.04)] transition-all duration-500 hover:bg-white/80 hover:shadow-[0_18px_40px_rgba(112,21,34,0.12)] sm:min-h-[405px] sm:px-6 sm:pt-[90px] lg:min-h-[420px]"
           >
 
             {/* =================================
