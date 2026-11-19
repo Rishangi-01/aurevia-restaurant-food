@@ -107,7 +107,7 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[420px] w-full items-center overflow-hidden bg-[#260609] py-16 lg:min-h-[480px] lg:py-20 px-6 sm:px-10 lg:px-16"
+      className="relative isolate flex min-h-[420px] w-full items-center overflow-hidden bg-[#260609] py-12 lg:min-h-[480px] lg:py-18 px-6 sm:px-10 lg:px-16"
     >
       {/* ================= BACKGROUND IMAGE ================= */}
 
@@ -151,14 +151,7 @@ export default function StatsSection() {
         {/* Outer decorative border */}
         <div className="pointer-events-none absolute inset-[7px] border border-[#d8b477]/90 sm:inset-[12px]" />
 
-        {/* Decorative corner accents */}
-        <div className="pointer-events-none absolute left-[7px] top-[7px] h-8 w-8 rounded-tl-[22px] border-l-2 border-t-2 border-[#e2c18d] sm:left-[12px] sm:top-[12px]" />
-
-        <div className="pointer-events-none absolute right-[7px] top-[7px] h-8 w-8 rounded-tr-[22px] border-r-2 border-t-2 border-[#e2c18d] sm:right-[12px] sm:top-[12px]" />
-
-        <div className="pointer-events-none absolute bottom-[7px] left-[7px] h-8 w-8 rounded-bl-[22px] border-b-2 border-l-2 border-[#e2c18d] sm:bottom-[12px] sm:left-[12px]" />
-
-        <div className="pointer-events-none absolute bottom-[7px] right-[7px] h-8 w-8 rounded-br-[22px] border-b-2 border-r-2 border-[#e2c18d] sm:bottom-[12px] sm:right-[12px]" />
+        
 
         {/* ================= STATISTICS GRID ================= */}
 
@@ -233,7 +226,7 @@ export default function StatsSection() {
                 </motion.div>
 
                 {/* NUMBER */}
-                <h3 className="font-serif text-5xl font-medium leading-none tracking-wide text-white sm:text-6xl lg:text-[76px]">
+                <h3 className="font-serif font-medium leading-none tracking-wide text-white text-3xl sm:text-4xl md:text-6xl lg:text-[68px]">
                   <AnimatedCounter
                     value={number}
                     suffix={suffix}

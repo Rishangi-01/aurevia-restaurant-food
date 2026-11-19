@@ -85,7 +85,7 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-      className="relative isolate overflow-hidden bg-[#fdf8f2] py-20 sm:py-24 lg:py-28 w-full px-6 sm:px-10 lg:px-16"
+      className="relative isolate overflow-hidden bg-[#fdf8f2] py-12 sm:py-16 lg:py-18 w-full px-6 sm:px-10 lg:px-16"
     >
 
       <motion.div
@@ -165,7 +165,7 @@ export default function MenuSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-5 font-serif text-[39px] font-bold leading-tight text-[#701522] sm:text-5xl md:text-6xl lg:text-[70px]"
+          className="mt-5 font-serif font-bold leading-tight text-[#701522] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]"
         >
           {restaurantMenuData.title}{" "}
           <span className="italic text-[#bd8b3f]">

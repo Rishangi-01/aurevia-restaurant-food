@@ -17,7 +17,7 @@ export default function DiningExperience() {
       }}
     >
       {/* CONTENT AREA */}
-      <div className="relative z-10 ml-auto flex w-full items-center justify-center px-5 py-16 sm:px-8 lg:w-[66%] lg:justify-center lg:px-8 lg:py-20 xl:w-[65%]">
+      <div className="relative z-10 ml-auto flex w-full items-center justify-center px-5 py-12 sm:px-8 lg:w-[66%] lg:justify-center lg:px-8 lg:py-18 xl:w-[65%]">
 
         <div className="mx-auto w-full max-w-[850px] text-center">
 
@@ -45,7 +45,7 @@ export default function DiningExperience() {
               delay: 0.15,
               ease: "easeOut",
             }}
-            className="font-serif text-3xl font-bold leading-[1.2] tracking-tight text-[#3c1013] sm:text-4xl md:text-5xl lg:text-[49px] xl:text-[56px]"
+            className="font-serif text-3xl font-bold leading-[1.2] tracking-tight text-[#3c1013] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]"
           >
             {restaurantCtaData.title[0]}{" "}
             <span className="italic text-[#781b2d]">

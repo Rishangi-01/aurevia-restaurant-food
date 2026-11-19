@@ -1,9 +1,9 @@
-
 "use client";
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { restaurantContactData, restaurantSiteData } from "@/data";
+import { Phone, Mail, MapPin, User } from "lucide-react";
 
 const contactDetails = [...restaurantContactData.cards]
   .sort(
@@ -33,6 +33,18 @@ const contactContinuation =
 export default function ContactSection() {
   const reduceMotion = useReducedMotion();
 
+  const contactIcons = {
+    Phone,
+    Mail,
+    MapPin,
+  };
+
+  const contactFormIcons = {
+    User,
+    Phone,
+    Mail,
+  };
+
   const fadeUp = {
     hidden: { opacity: 0, y: 35 },
     visible: {
@@ -45,12 +57,11 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden bg-[#fcf7f1] bg-no-repeat py-16 sm:py-20 lg:py-24 lg:bg-size-[100%_100%] px-6 sm:px-10 lg:px-16"
+      className="relative isolate overflow-hidden bg-[#fcf7f1] bg-no-repeat py-12 sm:py-16 lg:py-18 lg:bg-size-[100%_100%] px-6 sm:px-10 lg:px-16"
       style={{
         backgroundImage: `url('${restaurantContactData.form.backgroundImage}')`,
       }}
     >
-
       {/* Background overlay */}
       <div className="absolute inset-0 -z-10 bg-[#fffaf5]/10" />
 
@@ -82,7 +93,7 @@ export default function ContactSection() {
         </div>
 
         {/* Heading */}
-        <h2 className="font-serif text-5xl font-bold leading-tight text-[#741b29] sm:text-6xl md:text-7xl lg:text-[82px]">
+        <h2 className="font-serif font-bold leading-tight text-[#741b29] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]">
           {restaurantContactData.title.join(" ")}
         </h2>
 
@@ -98,16 +109,7 @@ export default function ContactSection() {
         </p>
       </motion.div>
 
-      {/* =====================================
-          MAIN CONTACT CONTENT
-      ===================================== */}
-
       <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-8 lg:grid-cols-[0.95fr_1.5fr_0.95fr] lg:gap-0">
-
-        {/* =====================================
-            LEFT CONTACT INFORMATION
-        ===================================== */}
-
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -116,7 +118,6 @@ export default function ContactSection() {
           className="relative z-20 rounded-[30px] border border-[#d8b77e]/70 bg-white/45 p-6 shadow-[0_12px_35px_rgba(112,25,35,0.04)] backdrop-blur-sm sm:p-8 lg:-mr-1 lg:rounded-r-none lg:border-r-0 lg:bg-white/20 lg:shadow-none"
         >
           <div className="space-y-6">
-
             {contactDetails.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -129,10 +130,14 @@ export default function ContactSection() {
                 }}
                 className="group flex items-start gap-4 border-b border-[#e9ddcf] pb-6 last:border-0 last:pb-0"
               >
-
                 {/* Icon Circle */}
                 <div className="flex h-[65px] w-[65px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#8b2938] to-[#64101f] text-[30px] text-white shadow-[0_5px_15px_rgba(112,21,34,0.18)] transition-all duration-500 group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-lg sm:h-[70px] sm:w-[70px]">
-                  <span>{item.symbol}</span>
+                  {(() => {
+                    const Icon =
+                      contactIcons[item.icon as keyof typeof contactIcons];
+
+                    return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                  })()}
                 </div>
 
                 {/* Details */}
@@ -142,18 +147,17 @@ export default function ContactSection() {
                   </h3>
 
                   {item.lines.map((line, i) => (
-                    <p
+                    <a
                       key={i}
+                      href={item.href}
                       className="break-words text-sm leading-7 text-[#393331] sm:text-base"
                     >
                       {line}
-                    </p>
+                    </a>
                   ))}
                 </div>
-
               </motion.div>
             ))}
-
           </div>
         </motion.div>
 
@@ -168,7 +172,6 @@ export default function ContactSection() {
           transition={{ duration: 0.9, delay: 0.15 }}
           className="relative z-30 rounded-[30px] border-[3px] border-[#c58d48] bg-gradient-to-br from-[#812534] via-[#701b29] to-[#5e101d] p-6 shadow-[0_18px_45px_rgba(91,17,29,0.22)] sm:p-8 md:p-10 lg:-mr-1 lg:rounded-[40px] lg:p-10"
         >
-
           {/* Inner decorative border */}
           <div className="pointer-events-none absolute inset-[5px] rounded-[25px] border border-[#e2b86f]/30 lg:rounded-[34px]" />
 
@@ -179,20 +182,28 @@ export default function ContactSection() {
               // Connect your contact API or email service here.
             }}
           >
-
             {/* Input Grid */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-
               {/* Name */}
               <div className="group relative">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[25px] text-[#742532]">
-                  {restaurantContactData.form.fields.firstName.symbol}
+                  {(() => {
+                    const Icon =
+                      contactFormIcons[
+                        restaurantContactData.form.fields.firstName
+                          .symbol as keyof typeof contactFormIcons
+                      ];
+
+                    return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                  })()}
                 </span>
 
                 <input
                   type="text"
                   name="name"
-                  placeholder={restaurantContactData.form.fields.firstName.placeholder}
+                  placeholder={
+                    restaurantContactData.form.fields.firstName.placeholder
+                  }
                   required
                   className="h-[66px] w-full rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] pl-16 pr-4 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -201,13 +212,23 @@ export default function ContactSection() {
               {/* Email */}
               <div className="group relative">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[24px] text-[#742532]">
-                  {restaurantContactData.form.fields.email.symbol}
+                  {(() => {
+                    const Icon =
+                      contactFormIcons[
+                        restaurantContactData.form.fields.email
+                          .symbol as keyof typeof contactFormIcons
+                      ];
+
+                    return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                  })()}
                 </span>
 
                 <input
                   type="email"
                   name="email"
-                  placeholder={restaurantContactData.form.fields.email.placeholder}
+                  placeholder={
+                    restaurantContactData.form.fields.email.placeholder
+                  }
                   required
                   className="h-[66px] w-full rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] pl-16 pr-4 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -216,13 +237,23 @@ export default function ContactSection() {
               {/* Phone */}
               <div className="group relative sm:col-span-2">
                 <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[25px] text-[#742532]">
-                  {restaurantContactData.form.fields.phone.symbol}
+                  {(() => {
+                    const Icon =
+                      contactFormIcons[
+                        restaurantContactData.form.fields.phone
+                          .symbol as keyof typeof contactFormIcons
+                      ];
+
+                    return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                  })()}
                 </span>
 
                 <input
                   type="tel"
                   name="phone"
-                  placeholder={restaurantContactData.form.fields.phone.placeholder}
+                  placeholder={
+                    restaurantContactData.form.fields.phone.placeholder
+                  }
                   required
                   className="h-[66px] w-full rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] pl-16 pr-4 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
@@ -231,18 +262,27 @@ export default function ContactSection() {
               {/* Message */}
               <div className="group relative sm:col-span-2">
                 <span className="absolute left-5 top-5 text-[25px] text-[#742532]">
-                  {restaurantContactData.form.fields.message.symbol}
+                  {(() => {
+                    const Icon =
+                      contactFormIcons[
+                        restaurantContactData.form.fields.message
+                          .symbol as keyof typeof contactFormIcons
+                      ];
+
+                    return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                  })()}
                 </span>
 
                 <textarea
                   name="message"
                   rows={5}
-                  placeholder={restaurantContactData.form.fields.message.placeholder}
+                  placeholder={
+                    restaurantContactData.form.fields.message.placeholder
+                  }
                   required
                   className="min-h-[165px] w-full resize-none rounded-[15px] border border-[#eadfd7] bg-[#fffdfb] py-5 pl-16 pr-5 text-base text-[#292020] outline-none transition-all duration-300 placeholder:text-[#5e5553] focus:border-[#d6a34f] focus:ring-4 focus:ring-[#d6a34f]/20"
                 />
               </div>
-
             </div>
 
             {/* Submit Button */}
@@ -252,9 +292,9 @@ export default function ContactSection() {
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}
               className="mt-6 w-full rounded-xl border border-[#e6bd72] bg-gradient-to-r from-[#d5a04d] to-[#f0c878] px-6 py-4 font-semibold uppercase tracking-[2px] text-[#57111d] shadow-lg transition-all duration-300 hover:shadow-[0_8px_25px_rgba(0,0,0,0.2)]"
             >
-              {restaurantContactData.form.submitLabel} <span className="ml-2">→</span>
+              {restaurantContactData.form.submitLabel}{" "}
+              <span className="ml-2">→</span>
             </motion.button>
-
           </form>
         </motion.div>
 
@@ -269,7 +309,6 @@ export default function ContactSection() {
           transition={{ duration: 1 }}
           className="relative z-10 mx-auto h-[330px] w-full max-w-[520px] overflow-hidden rounded-[30px] shadow-[0_15px_35px_rgba(65,20,20,0.15)] sm:h-[420px] lg:-ml-1 lg:h-[480px] lg:rounded-l-[65px]"
         >
-
           <Image
             src={restaurantContactData.hero.image.src}
             alt={restaurantContactData.hero.image.alt}
@@ -278,11 +317,8 @@ export default function ContactSection() {
             sizes="(max-width: 768px) 100vw, 35vw"
             className="object-cover transition-transform duration-1000 hover:scale-110"
           />
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }

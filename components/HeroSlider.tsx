@@ -120,7 +120,7 @@ export default function HeroSlider() {
                       duration: 1,
                       delay: 0.35,
                     }}
-                    className="font-serif text-7xl font-medium leading-none tracking-wide text-[#fffaf0] sm:text-8xl md:text-9xl lg:text-[150px]"
+                    className="font-serif font-medium leading-none tracking-wide text-[#fffaf0] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]"
                   >
                     {slide.title[0]}
                   </motion.h1>
@@ -176,16 +176,16 @@ export default function HeroSlider() {
       <button
         type="button"
         aria-label={restaurantHeroData.previousLabel}
-        className="aurevia-prev absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#fffaf0] text-[#831329] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#97152e] hover:text-white sm:left-7 sm:h-14 sm:w-14 lg:left-8 lg:h-16 lg:w-16"
+        className="aurevia-prev absolute left-4 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#fffaf0] text-[#831329] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#97152e] hover:text-white sm:left-7 sm:h-14 sm:w-14 lg:left-8 lg:h-16 lg:w-16"
       >
-        <ChevronLeft size={32} strokeWidth={2.5} />
+        <ChevronLeft size={28} strokeWidth={2.5} />
       </button>
       <button
         type="button"
         aria-label={restaurantHeroData.nextLabel}
-        className="aurevia-next absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#fffaf0] text-[#831329] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#97152e] hover:text-white sm:right-7 sm:h-14 sm:w-14 lg:right-8 lg:h-16 lg:w-16"
+        className="aurevia-next absolute right-4 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-[#fffaf0] text-[#831329] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#97152e] hover:text-white sm:right-7 sm:h-14 sm:w-14 lg:right-8 lg:h-16 lg:w-16"
       >
-        <ChevronRight size={32} strokeWidth={2.5} />
+        <ChevronRight size={28} strokeWidth={2.5} />
       </button>
       {/* <div className="aurevia-pagination absolute bottom-7 left-0 z-20 flex w-full items-center justify-center gap-3" />
 

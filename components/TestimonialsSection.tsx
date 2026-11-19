@@ -13,7 +13,7 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       aria-label={restaurantTestimonialsData.ariaLabel}
-      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-32 lg:pt-24 w-full"
+      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-12 pt-12 sm:pb-16 sm:pt-16 lg:pb-18 lg:pt-18 w-full"
     >
 
 
@@ -111,7 +111,7 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-5 font-serif text-4xl font-bold leading-tight text-[#701522] sm:text-5xl md:text-6xl lg:text-[64px]"
+          className="mt-5 font-serif font-bold leading-tight text-[#701522] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]"
         >
           {restaurantTestimonialsData.title}{" "}
           <span className="italic text-[#c18a24]">
@@ -169,7 +169,7 @@ export default function TestimonialsSection() {
             whileHover={
               reduceMotion ? undefined : { y: -8 }
             }
-            className="group relative mx-auto flex min-h-[390px] w-full max-w-[450px] flex-col items-center rounded-[27px] border-[1.5px] border-[#dda33e] bg-white/45 px-5 pb-7 pt-[88px] text-center shadow-[0_8px_25px_rgba(112,21,34,0.04)] transition-all duration-500 hover:bg-white/80 hover:shadow-[0_18px_40px_rgba(112,21,34,0.12)] sm:min-h-[405px] sm:px-6 sm:pt-[90px] lg:min-h-[420px]"
+            className="group relative mx-auto flex min-h-[390px] w-full max-w-[450px] flex-col items-center rounded-[27px] border-[1.5px] border-[#dda33e] bg-white/45 px-5 pb-7 pt-[88px] text-center shadow-[0_8px_25px_rgba(112,21,34,0.04)] transition-all duration-500 hover:bg-white/80 hover:shadow-[0_18px_40px_rgba(112,21,34,0.12)] sm:min-h-[405px] sm:px-6 sm:pt-[90px] lg:min-h-[420px] mt-8"
           >
 
             {/* =================================

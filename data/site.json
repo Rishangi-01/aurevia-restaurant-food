@@ -1014,25 +1014,25 @@
             "bannerImage": "/images/hero-1.webp",
             "socials": [
               {
-                "icon": "facebook",
+                "icon": "FaFacebookF",
                 "symbol": "f",
                 "label": "Facebook",
                 "href": "#"
               },
               {
-                "icon": "instagram",
+                "icon": "FaInstagram",
                 "symbol": "◎",
                 "label": "Instagram",
                 "href": "#"
               },
               {
-                "icon": "youtube",
+                "icon": "FaYoutube",
                 "symbol": "▶",
                 "label": "YouTube",
                 "href": "#"
               },
               {
-                "icon": "linkedin",
+                "icon": "FaLinkedinIn",
                 "symbol": "in",
                 "label": "LinkedIn",
                 "href": "#"
@@ -1148,7 +1148,7 @@
               },
               {
                 "icon": "utensils",
-                "title": "Healthy Fruit Bowl",
+                "title": "Healthy Fruit",
                 "text": "A refreshing mix of seasonal fruits, yogurt and crunchy granola."
               },
               {
@@ -2177,21 +2177,24 @@
             "text": "Have a question about our menu, reservations, or special events? We’re here to help, contact us today.",
             "cards": [
               {
-                "icon": "phone-solid",
+                "icon": "Phone",
                 "symbol": "☎",
                 "title": "Call Us",
+                "href": "tel:+919876543210",
                 "field": "phones"
               },
               {
-                "icon": "mail-solid",
+                "icon": "Mail",
                 "symbol": "✉",
                 "title": "Email Us",
+                "href": "mailto:info@XYZ.com",
                 "field": "emails"
               },
               {
-                "icon": "pin-solid",
+                "icon": "MapPin",
                 "symbol": "◎",
                 "title": "Our Location",
+                "href": "https://www.google.com/maps/search/?api=1&query=123+Food+Street+New+Delhi",
                 "field": "address"
               }
             ],
@@ -2229,7 +2232,7 @@
                 "firstName": {
                   "label": "Your Name",
                   "placeholder": "Your Name",
-                  "symbol": "♙"
+                  "symbol": "User"
                 },
                 "lastName": {
                   "label": "Last name",
@@ -2238,18 +2241,18 @@
                 "email": {
                   "label": "Your Email",
                   "placeholder": "Your Email",
-                  "symbol": "✉"
+                  "symbol": "Mail"
                 },
                 "phone": {
                   "label": "Phone Number",
                   "placeholder": "Phone Number",
                   "countryButtonLabel": "Choose country calling code",
-                  "symbol": "☎"
+                  "symbol": "Phone"
                 },
                 "message": {
                   "label": "Your Message",
                   "placeholder": "Your Message",
-                  "symbol": "♧"
+                  "symbol": "Mail"
                 }
               },
               "countries": [
@@ -2488,23 +2491,23 @@
                 "links": [
                   {
                     "label": "Dine In",
-                    "href": "#"
+                    "href": "#contact"
                   },
                   {
                     "label": "Takeaway",
-                    "href": "#"
+                    "href": "#contact"
                   },
                   {
                     "label": "Home Delivery",
-                    "href": "#"
+                    "href": "#contact"
                   },
                   {
                     "label": "Private Events",
-                    "href": "#"
+                    "href": "#contact"
                   },
                   {
                     "label": "Party Booking",
-                    "href": "#"
+                    "href": "#contact"
                   }
                 ]
               }
@@ -2515,21 +2518,21 @@
                 "title": "Call Us",
                 "value": "+1 00000000",
                 "href": "tel:+919876543210",
-                "icon": "phone",
+                "icon": "Phone",
                 "symbol": "☎"
               },
               {
                 "title": "Email Us",
                 "value": "info@XYZ.com",
                 "href": "mailto:info@XYZ.com",
-                "icon": "mail",
+                "icon": "Mail",
                 "symbol": "✉"
               },
               {
                 "title": "Visit Us",
                 "value": "742 Evergreen Terrace (or 123 Main St), Springfield, IL (Illinois), 62704, United States",
                 "href": "https://www.google.com/maps/search/?api=1&query=123+Food+Street+New+Delhi",
-                "icon": "map-pin",
+                "icon": "MapPin",
                 "symbol": "⌖"
               }
             ],

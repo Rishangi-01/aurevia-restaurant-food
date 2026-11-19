@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-36 pt-20 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-28 w-full px-6 sm:px-10 lg:px-16"
+      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-12 pt-12 sm:pb-16 sm:pt-16 lg:pb-18 lg:pt-18 w-full px-6 sm:px-10 lg:px-16"
     >
 
       <motion.div
@@ -102,7 +102,7 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 font-serif text-5xl font-bold leading-tight text-[#701522] sm:text-6xl md:text-7xl lg:text-[82px]"
+          className="mt-6 font-serif font-bold leading-tight text-[#701522] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]"
         >
           {restaurantWhyChooseUsData.title}{" "}
           <span className="italic text-[#bd842e]">

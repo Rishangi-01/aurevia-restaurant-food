@@ -15,7 +15,7 @@ export default function ChefsSection() {
   return (
     <section
       id="chefs"
-      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24 w-full px-6 sm:px-10 lg:px-16"
+      className="relative isolate overflow-hidden bg-[#fcf8f3] pb-12 pt-12 sm:pb-16 sm:pt-16 lg:pb-18 lg:pt-18 w-full px-6 sm:px-10 lg:px-16"
     >
 
 
@@ -112,7 +112,7 @@ export default function ChefsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-4 font-serif text-5xl font-bold leading-tight text-[#701522] sm:text-6xl md:text-7xl lg:text-[76px]"
+          className="mt-4 font-serif font-bold leading-tight text-[#701522] text-3xl sm:text-4xl md:text-6xl lg:text-[68px]"
         >
           {titlePrefix}{" "}
           <span className="italic text-[#bd842e]">

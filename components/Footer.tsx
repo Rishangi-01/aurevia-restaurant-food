@@ -4,6 +4,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { restaurantFooterData, restaurantSiteData } from "@/data";
 import Image from "next/image";
+import { Phone, Mail, MapPin } from "lucide-react";
+import {
+  FaInstagram,
+  FaYoutube,
+  FaFacebookF,
+  FaLinkedinIn,
+} from "react-icons/fa";
+
 
 const quickLinks = restaurantFooterData.columns[0].links;
 const services = restaurantFooterData.columns[1].links;
@@ -39,6 +47,19 @@ const itemVariants = {
     transition: { duration: 0.8, ease: "easeOut" as const },
   },
 };
+
+const contactIcons = {
+  Phone,
+  Mail,
+  MapPin,
+};
+
+const socialIcons = {
+  FaFacebookF,
+  FaInstagram, 
+  FaYoutube,
+  FaLinkedinIn
+}
 
 export default function Footer() {
   return (
@@ -94,7 +115,14 @@ export default function Footer() {
                   }}
                   className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e5bd71] text-lg font-bold text-[#f5d58c] transition-colors duration-300"
                 >
-                  {social.symbol}
+                  {(() => {
+                    const Icon =
+                      socialIcons[
+                        social.icon as keyof typeof socialIcons
+                      ];
+
+                    return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                  })()}
                 </motion.a>
               ))}
             </div>
@@ -182,7 +210,12 @@ export default function Footer() {
                   }
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f5d58c] text-xl text-[#381015] transition-all duration-300 group-hover:scale-110">
-                    {contact.symbol}
+                    {(() => {
+                      const Icon =
+                        contactIcons[contact.icon as keyof typeof contactIcons];
+
+                      return Icon ? <Icon size={22} strokeWidth={1.8} /> : null;
+                    })()}
                   </span>
                   <span
                     className={

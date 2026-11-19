@@ -82,7 +82,7 @@ useEffect(() => {
             width={450}
             height={115}
             priority
-            className="h-auto w-[230px] object-contain sm:w-[280px] lg:w-[320px] xl:w-[215px]"
+            className="h-auto w-[130px] object-contain sm:w-[280px] lg:w-[320px] xl:w-[215px]"
           />
         </Link>
 
