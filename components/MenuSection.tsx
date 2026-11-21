@@ -42,7 +42,7 @@ function MenuItem({
       className="group flex min-w-0 items-center gap-4 sm:gap-5"
     >
       {/* FOOD IMAGE */}
-      <div className="relative h-[105px] w-[115px] shrink-0 overflow-hidden rounded-[20px] shadow-[0_5px_15px_rgba(80,35,15,0.12)] sm:h-[120px] sm:w-[145px] lg:h-[120px] lg:w-[155px]">
+      <div className="relative h-[90px] w-[90px] shrink-0 overflow-hidden rounded-[20px] shadow-[0_5px_15px_rgba(80,35,15,0.12)] sm:h-[120px] sm:w-[145px] lg:h-[120px] lg:w-[155px]">
         <Image
           src={item.homeImage}
           alt={item.homeImageAlt ?? item.title}
@@ -57,14 +57,14 @@ function MenuItem({
       {/* FOOD DETAILS */}
       <div className="min-w-0 flex-1">
         {/* NAME + PRICE */}
-        <div className="flex min-w-0 items-baseline gap-2">
-          <h3 className="shrink-0 font-serif text-[17px] font-bold leading-tight text-[#701522] transition-colors duration-300 group-hover:text-[#b58538] sm:text-xl lg:text-[23px]">
+        <div className="flex min-w-0 items-baseline gap-1 lg:gap-2">
+          <h3 className="shrink-0 font-serif text-[14px] font-bold leading-tight text-[#701522] transition-colors duration-300 group-hover:text-[#b58538] sm:text-xl lg:text-[23px]">
             {item.title}
           </h3>
 
           <div className="relative bottom-1 min-w-[10px] flex-1 border-b-2 border-dotted border-[#c18c42]" />
 
-          <span className="shrink-0 font-serif text-lg font-bold text-[#701522] sm:text-xl lg:text-[25px]">
+          <span className="shrink-0 font-serif text-md font-bold text-[#701522] sm:text-xl lg:text-[25px]">
             {item.price}
           </span>
         </div>
