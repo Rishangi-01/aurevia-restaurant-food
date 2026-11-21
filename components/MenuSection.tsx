@@ -54,9 +54,8 @@ function MenuItem({
         <div className="absolute inset-0 bg-[#721525]/0 transition-colors duration-500 group-hover:bg-[#721525]/10" />
       </div>
 
-      {/* FOOD DETAILS */}
       <div className="min-w-0 flex-1">
-        {/* NAME + PRICE */}
+
         <div className="flex min-w-0 items-baseline gap-1 lg:gap-2">
           <h3 className="shrink-0 font-serif text-[14px] font-bold leading-tight text-[#701522] transition-colors duration-300 group-hover:text-[#b58538] sm:text-xl lg:text-[23px]">
             {item.title}
@@ -69,7 +68,7 @@ function MenuItem({
           </span>
         </div>
 
-        {/* DESCRIPTION */}
+
         <p className="mt-2 text-[13px] leading-[1.55] text-[#363636] sm:text-sm lg:text-[16px] lg:leading-[1.55]">
           {item.text}
         </p>

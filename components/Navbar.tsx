@@ -22,6 +22,7 @@ const restaurantLabel = restaurantSiteData.alt
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [mobileActiveSection, setMobileActiveSection] = useState("home");
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -45,19 +46,33 @@ export default function Navbar() {
       });
 
       setActiveSection(currentSection);
+      if (!window.location.hash) {
+        setMobileActiveSection(currentSection);
+      }
     };
 
+    const syncMobileSectionToHash = () => {
+      const sectionId = window.location.hash.slice(1);
+      const matchingLink = navLinks.find((link) => link.sectionId === sectionId);
+      const targetSectionId = matchingLink?.sectionId ?? "home";
+
+      setMobileActiveSection(targetSectionId);
+    };
+
+    syncMobileSectionToHash();
     updateActiveSection();
 
     window.addEventListener("scroll", updateActiveSection, {
       passive: true,
     });
     window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", syncMobileSectionToHash);
     window.addEventListener("hashchange", updateActiveSection);
 
     return () => {
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("hashchange", syncMobileSectionToHash);
       window.removeEventListener("hashchange", updateActiveSection);
     };
   }, []);
@@ -166,7 +181,7 @@ export default function Navbar() {
             <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 sm:px-8">
 
               {navLinks.map((link, index) => {
-                const isActive = activeSection === link.sectionId;
+                const isActive = mobileActiveSection === link.sectionId;
 
                 return (
                   <motion.div
@@ -180,6 +195,7 @@ export default function Navbar() {
                       onClick={() => {
                         if (link.sectionId) {
                           setActiveSection(link.sectionId);
+                          setMobileActiveSection(link.sectionId);
                         }
                         setIsOpen(false);
                       }}
