@@ -12,7 +12,7 @@ const navLinks = [...restaurantHeaderData.links, restaurantHeaderData.button].ma
   (link) => ({
     name: link.label,
     href: link.href,
-    sectionId: link.href.replace(/^#/, ""),
+    sectionId: link.href.startsWith("#") ? link.href.slice(1) : null,
   }),
 );
 const restaurantLabel = restaurantSiteData.alt
@@ -23,44 +23,44 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  
-useEffect(() => {
-  const updateActiveSection = () => {
-    const scrollPosition = window.scrollY + 150;
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 150;
 
-    let currentSection = "home";
+      let currentSection = "home";
 
-    navLinks.forEach((link) => {
-      const section = document.getElementById(link.sectionId);
+      navLinks.forEach((link) => {
+        if (!link.sectionId) {
+          return;
+        }
 
-      if (section && section.offsetTop <= scrollPosition) {
-        currentSection = link.sectionId;
-      }
+        const section = document.getElementById(link.sectionId);
+        const sectionTop = section
+          ? section.getBoundingClientRect().top + window.scrollY
+          : null;
+
+        if (sectionTop !== null && sectionTop <= scrollPosition) {
+          currentSection = link.sectionId;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
     });
+    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", updateActiveSection);
 
-    setActiveSection(currentSection);
-  };
-
-  // Set active section on initial page load
-  updateActiveSection();
-
-  // Update while scrolling
-  window.addEventListener("scroll", updateActiveSection, {
-    passive: true,
-  });
-
-  // Handle browser resize
-  window.addEventListener("resize", updateActiveSection);
-
-  // Handle direct navigation to a hash
-  window.addEventListener("hashchange", updateActiveSection);
-
-  return () => {
-    window.removeEventListener("scroll", updateActiveSection);
-    window.removeEventListener("resize", updateActiveSection);
-    window.removeEventListener("hashchange", updateActiveSection);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("hashchange", updateActiveSection);
+    };
+  }, []);
 
 
   return (
@@ -177,7 +177,12 @@ useEffect(() => {
                   >
                     <Link
                       href={link.href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        if (link.sectionId) {
+                          setActiveSection(link.sectionId);
+                        }
+                        setIsOpen(false);
+                      }}
                       aria-current={isActive ? "page" : undefined}
                       className={`flex items-center justify-between rounded-xl px-5 py-3.5 font-serif text-lg font-semibold transition-all duration-300 ${
                         isActive

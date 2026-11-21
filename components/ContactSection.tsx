@@ -285,12 +285,12 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Submit Button */}
+            
             <motion.button
               type="submit"
               whileHover={reduceMotion ? undefined : { scale: 1.03 }}
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-              className="mt-6 w-full rounded-xl border border-[#e6bd72] bg-gradient-to-r from-[#d5a04d] to-[#f0c878] px-6 py-4 font-semibold uppercase tracking-[2px] text-[#57111d] shadow-lg transition-all duration-300 hover:shadow-[0_8px_25px_rgba(0,0,0,0.2)]"
+              className="mt-6 w-full rounded-xl border border-[#e6bd72] bg-gradient-to-r from-[#d5a04d] to-[#f0c878] px-4 py-4 font-semibold uppercase tracking-[2px] text-[#57111d] shadow-lg transition-all duration-300 hover:shadow-[0_8px_25px_rgba(0,0,0,0.2)]"
             >
               {restaurantContactData.form.submitLabel}{" "}
               <span className="ml-2">→</span>
